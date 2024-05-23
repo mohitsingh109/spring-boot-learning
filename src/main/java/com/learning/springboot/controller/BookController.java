@@ -32,7 +32,7 @@ public class BookController {
 
     @GetMapping
     public List<Book> getAllBooks() {
-        return bookService.getAllBooks();
+        return bookService.getAllBooksSortByName();
     }
 
     @GetMapping("/name/{value}")

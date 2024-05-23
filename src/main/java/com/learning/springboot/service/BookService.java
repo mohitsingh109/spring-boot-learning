@@ -3,6 +3,7 @@ package com.learning.springboot.service;
 import com.learning.springboot.model.Book;
 import com.learning.springboot.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,9 +40,12 @@ public class BookService {
     }
 
     public List<Book> getAllBooks() {
-        // []
-        //[1, 2]
         return bookRepository.findAll(); // select * from table;
+    }
+
+    public List<Book> getAllBooksSortByName() {
+        // select * from table order by name;
+        return bookRepository.findAll(Sort.by("name"));
     }
 
     public void deleteById(Integer id) {
@@ -49,6 +53,6 @@ public class BookService {
     }
 
     public List<Book> getBookByName(String name) {
-        return bookRepository.findByName(name);
+        return bookRepository.findByName(name, Sort.by("title"));
     }
 }
