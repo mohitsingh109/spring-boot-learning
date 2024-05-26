@@ -24,7 +24,7 @@ public class Users {
 
     private String name;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToOne(mappedBy = "users")
     private Address address; // data member
 }
 
