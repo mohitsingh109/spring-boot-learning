@@ -20,10 +20,16 @@ public class QuestionService {
     }
 
     public void addQuestion(Question question) {
-        for (Answer answer : question.getAnswers()) {
-            answer.setQuestion(question);
+        if(question.getAnswers() != null) {
+            for (Answer answer : question.getAnswers()) {
+                answer.setQuestion(question); // bi-directional mapping
+            }
         }
         questionRepository.save(question);
+    }
+
+    public Question findById(Long id) {
+        return questionRepository.findById(id).get();
     }
 
     public List<Question> getAllQuestion() {

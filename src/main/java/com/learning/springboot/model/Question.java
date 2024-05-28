@@ -29,7 +29,12 @@ public class Question {
 
     private String text;
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "question", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JsonManagedReference
-    private List<Answer> answers; //
+    private List<Answer> answers;
 }
+
+/**
+ *
+ * M - M
+ */
