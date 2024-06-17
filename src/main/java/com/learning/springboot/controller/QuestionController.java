@@ -1,6 +1,7 @@
 package com.learning.springboot.controller;
 
 import com.learning.springboot.model.Question;
+import com.learning.springboot.model.QuestionDTO;
 import com.learning.springboot.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +29,11 @@ public class QuestionController {
     }
 
     @GetMapping
-    public List<Question> getAllQuestion() {
+    public List<QuestionDTO> getAllQuestion() {
         return questionService.getAllQuestion();
+    }
+
+    public void setQuestionService(QuestionService questionService) {
+        this.questionService = questionService;
     }
 }

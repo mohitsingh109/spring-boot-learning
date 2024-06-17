@@ -26,7 +26,8 @@ public class Address {
     private String country;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "u_id")
+    //@JoinColumn(name = "u_id")
     private Users users;
 }
+
 

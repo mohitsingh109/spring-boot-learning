@@ -3,6 +3,8 @@ package com.learning.springboot.service;
 
 import com.learning.springboot.model.Answer;
 import com.learning.springboot.model.Question;
+import com.learning.springboot.model.QuestionDTO;
+import com.learning.springboot.model.mapper.QuestionMapper;
 import com.learning.springboot.repository.AnswerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,9 +25,9 @@ public class AnswerService {
 
     public void addAnswer(Long id, Answer answer) {
         // Question
-        Question question = questionService.findById(id);
+        QuestionDTO questionDTO = questionService.findById(id);
 
-        answer.setQuestion(question);
+        answer.setQuestion(QuestionMapper.toQuestion(questionDTO));
 
         answerRepository.save(answer);
     }
